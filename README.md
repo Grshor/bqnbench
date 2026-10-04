@@ -13,10 +13,15 @@ exact (`≡`) value matching — shape, depth and type included.
 23 tasks, 3 correctness categories, temperature 0, exact-match scoring.
 Models: two small local LLMs (Q4_K_M, one RTX 4070 SUPER, llama.cpp):
 
-| model | passed |
-| --- | --- |
-| MiniCPM5-2B | 1/23 |
-| VibeThinker-3B | 0/23 |
+| model | passed runtime tests | compiled at all (bqnlsp) |
+| --- | --- | --- |
+| MiniCPM5-2B | 1/23 | 1/23 |
+| VibeThinker-3B | 0/23 | 0/23 |
+
+The static column is the brutal one: **22 of 23 MiniCPM5 answers and all 23
+VibeThinker answers do not even compile** — runtime correctness never gets a
+chance to matter. Verdicts from `bqnlsp check --json` (shape/type inference),
+i.e. the compile bar is syntax + basic static analysis, far below full BQN.
 
 The one pass was `+´` (sum). The dominant failure mode: models answer in
 **APL dialect** — `→` arrows, `: ` dfn headers, 1-indexed instincts — which
