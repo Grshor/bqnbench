@@ -1,0 +1,6 @@
+{
+  "models": [
+    { "name": "minicpm5-2b", "base_url": "http://127.0.0.1:8091/v1", "model": "MiniCPM5-2B-Q4_K_M.gguf" },
+    { "name": "gpt", "base_url": "https://api.openai.com/v1", "model": "gpt-4o", "api_key_env": "OPENAI_API_KEY" }
+  ]
+}

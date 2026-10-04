@@ -1,0 +1,14 @@
+{
+  "models": [
+    {
+      "name": "minicpm5-2b",
+      "base_url": "http://127.0.0.1:8091/v1",
+      "model": "/home/gwushor/Projects/localmix/models/MiniCPM5-2B-Q4_K_M.gguf"
+    },
+    {
+      "name": "vibethinker-3b",
+      "base_url": "http://127.0.0.1:8092/v1",
+      "model": "/home/gwushor/Projects/localmix/models/VibeThinker-3B.Q4_K_M.gguf"
+    }
+  ]
+}

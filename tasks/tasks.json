@@ -1,0 +1,326 @@
+[
+  {
+    "id": "sum",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the sum of a numeric list. Example: Sol ⟨1,2,3⟩ gives 6. Assign it with Sol ← +´ or as a block.",
+    "solution": "+´",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,3⟩",
+        "expect": "6"
+      },
+      {
+        "expr": "Sol ⟨⟩",
+        "expect": "0"
+      },
+      {
+        "expr": "Sol ⟨5⟩",
+        "expect": "5"
+      }
+    ]
+  },
+  {
+    "id": "max",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the maximum of a non-empty numeric list. Example: Sol ⟨3,1,4⟩ gives 4.",
+    "solution": "⌈´",
+    "tests": [
+      {
+        "expr": "Sol ⟨3,1,4⟩",
+        "expect": "4"
+      },
+      {
+        "expr": "Sol ⟨7⟩",
+        "expect": "7"
+      }
+    ]
+  },
+  {
+    "id": "reverse",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that reverses a list or string. Example: Sol ⟨1,2,3⟩ gives ⟨3,2,1⟩.",
+    "solution": "⌽",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,3⟩",
+        "expect": "⟨3,2,1⟩"
+      },
+      {
+        "expr": "Sol \"abc\"",
+        "expect": "\"cba\""
+      }
+    ]
+  },
+  {
+    "id": "double-each",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that doubles every element of a numeric list. Example: Sol ⟨1,2,3⟩ gives ⟨2,4,6⟩.",
+    "solution": "{2×𝕩}",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,3⟩",
+        "expect": "⟨2,4,6⟩"
+      }
+    ]
+  },
+  {
+    "id": "range",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that, given a non-negative integer n, returns ⟨0,1,…,n−1⟩. Example: Sol 5 gives ⟨0,1,2,3,4⟩. Sol 0 gives an empty list.",
+    "solution": "↕",
+    "tests": [
+      {
+        "expr": "Sol 5",
+        "expect": "⟨0,1,2,3,4⟩"
+      },
+      {
+        "expr": "Sol 0",
+        "expect": "⟨⟩"
+      }
+    ]
+  },
+  {
+    "id": "sort-up",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that sorts a numeric list ascending. Example: Sol ⟨3,1,2⟩ gives ⟨1,2,3⟩.",
+    "solution": "∧",
+    "tests": [
+      {
+        "expr": "Sol ⟨3,1,2⟩",
+        "expect": "⟨1,2,3⟩"
+      }
+    ]
+  },
+  {
+    "id": "sort-down",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that sorts a numeric list descending (by values, not indices). Example: Sol ⟨3,1,2⟩ gives ⟨3,2,1⟩.",
+    "solution": "{(⍒𝕩)⊏𝕩}",
+    "tests": [
+      {
+        "expr": "Sol ⟨3,1,2⟩",
+        "expect": "⟨3,2,1⟩"
+      }
+    ]
+  },
+  {
+    "id": "unique",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the unique elements of a list, preserving first-occurrence order. Example: Sol ⟨1,2,1,3,1⟩ gives ⟨1,2,3⟩.",
+    "solution": "⍷",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,1,3,1⟩",
+        "expect": "⟨1,2,3⟩"
+      }
+    ]
+  },
+  {
+    "id": "mean",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the arithmetic mean of a non-empty numeric list. Example: Sol ⟨1,2,3⟩ gives 2.",
+    "solution": "+´÷≠",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,3⟩",
+        "expect": "2"
+      },
+      {
+        "expr": "Sol ⟨2,4⟩",
+        "expect": "3"
+      }
+    ]
+  },
+  {
+    "id": "row-sums",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that takes a numeric matrix (rank 2) and returns the sum of each row. Example: for the 3×2 matrix 3‿2⥊↕6 (rows ⟨0,1⟩,⟨2,3⟩,⟨4,5⟩) Sol gives ⟨1,5,9⟩.",
+    "solution": "+´˘",
+    "tests": [
+      {
+        "expr": "Sol (3‿2⥊↕6)",
+        "expect": "⟨1,5,9⟩"
+      }
+    ]
+  },
+  {
+    "id": "transpose",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that transposes a numeric matrix. Example: transposing 2‿3⥊↕6 (rows ⟨0,1,2⟩,⟨3,4,5⟩) gives the 3×2 matrix with rows ⟨0,3⟩,⟨1,4⟩,⟨2,5⟩.",
+    "solution": "⍉",
+    "tests": [
+      {
+        "expr": "Sol (2‿3⥊↕6)",
+        "expect": "(3‿2⥊0‿3‿1‿4‿2‿5)"
+      }
+    ]
+  },
+  {
+    "id": "shape",
+    "category": "primitives",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the shape of an array as a list. Example: Sol (3‿2⥊↕6) gives ⟨3,2⟩; Sol 5 gives an empty list.",
+    "solution": "≢",
+    "tests": [
+      {
+        "expr": "Sol (3‿2⥊↕6)",
+        "expect": "⟨3,2⟩"
+      },
+      {
+        "expr": "Sol 5",
+        "expect": "⟨⟩"
+      }
+    ]
+  },
+  {
+    "id": "running-sum",
+    "category": "idioms",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the running (prefix) sums of a numeric list. Example: Sol ⟨1,2,3⟩ gives ⟨1,3,6⟩.",
+    "solution": "+`",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,3⟩",
+        "expect": "⟨1,3,6⟩"
+      }
+    ]
+  },
+  {
+    "id": "consecutive-diffs",
+    "category": "idioms",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the differences of consecutive elements, where the first element is diffed against 0. Example: Sol ⟨1,2,3⟩ gives ⟨1,1,1⟩.",
+    "solution": "{𝕩-»𝕩}",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,3⟩",
+        "expect": "⟨1,1,1⟩"
+      }
+    ]
+  },
+  {
+    "id": "rotate",
+    "category": "idioms",
+    "prompt": "Write a dyadic BQN function assigned to Sol: given left argument n and right argument list l, rotate l left by n positions (rotated-out elements wrap to the end). Example: 2 Sol ⟨1,2,3,4⟩ gives ⟨3,4,1,2⟩.",
+    "solution": "{𝕨↓𝕩∾𝕨↑𝕩}",
+    "tests": [
+      {
+        "expr": "2 Sol ⟨1,2,3,4⟩",
+        "expect": "⟨3,4,1,2⟩"
+      }
+    ]
+  },
+  {
+    "id": "take-last",
+    "category": "idioms",
+    "prompt": "Write a dyadic BQN function assigned to Sol: given left argument n and right argument list l, return the last n elements of l. Example: 2 Sol ⟨1,2,3⟩ gives ⟨2,3⟩.",
+    "solution": "{(-𝕨)↑𝕩}",
+    "tests": [
+      {
+        "expr": "2 Sol ⟨1,2,3⟩",
+        "expect": "⟨2,3⟩"
+      }
+    ]
+  },
+  {
+    "id": "drop",
+    "category": "idioms",
+    "prompt": "Write a dyadic BQN function assigned to Sol: given left argument n and right argument list l, return l with its first n elements removed. Example: 2 Sol ⟨1,2,3⟩ gives ⟨3⟩.",
+    "solution": "{𝕨↓𝕩}",
+    "tests": [
+      {
+        "expr": "2 Sol ⟨1,2,3⟩",
+        "expect": "⟨3⟩"
+      }
+    ]
+  },
+  {
+    "id": "count-char",
+    "category": "idioms",
+    "prompt": "Write a dyadic BQN function assigned to Sol: given left argument a single character c and right argument a string s, return the number of occurrences of c in s. Example: 'a' Sol \"banana\" gives 3.",
+    "solution": "{+´𝕨=𝕩}",
+    "tests": [
+      {
+        "expr": "'a' Sol \"banana\"",
+        "expect": "3"
+      },
+      {
+        "expr": "'z' Sol \"banana\"",
+        "expect": "0"
+      }
+    ]
+  },
+  {
+    "id": "repeat-string",
+    "category": "idioms",
+    "prompt": "Write a dyadic BQN function assigned to Sol: given left argument n and right argument string s, return s repeated n times. Example: 3 Sol \"ab\" gives \"ababab\".",
+    "solution": "{(𝕨×≠𝕩)⥊𝕩}",
+    "tests": [
+      {
+        "expr": "3 Sol \"ab\"",
+        "expect": "\"ababab\""
+      }
+    ]
+  },
+  {
+    "id": "unique-with-counts",
+    "category": "idioms",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns a 2-element list: first the unique elements of the input list (first-occurrence order), then a list of how many times each occurs. Example: Sol ⟨1,2,1,1⟩ gives ⟨⟨1,2⟩,⟨3,1⟩⟩.",
+    "solution": "{k←⍷𝕩 ⋄ k‿(+´¨k=⌜<𝕩)}",
+    "tests": [
+      {
+        "expr": "Sol ⟨1,2,1,1⟩",
+        "expect": "⟨⟨1,2⟩,⟨3,1⟩⟩"
+      }
+    ]
+  },
+  {
+    "id": "fib",
+    "category": "algorithms",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the n-th Fibonacci number (0-indexed, Fib 0 = 0, Fib 1 = 1). Example: Sol 10 gives 55.",
+    "solution": "{𝕩<2?𝕩;(𝕊𝕩-1)+(𝕊𝕩-2)}",
+    "tests": [
+      {
+        "expr": "Sol 10",
+        "expect": "55"
+      },
+      {
+        "expr": "Sol 0",
+        "expect": "0"
+      },
+      {
+        "expr": "Sol 1",
+        "expect": "1"
+      }
+    ]
+  },
+  {
+    "id": "median",
+    "category": "algorithms",
+    "prompt": "Write a monadic BQN function assigned to Sol that returns the median of a non-empty numeric list: sort it and take the element at index ⌊length÷2⌋. Example: Sol ⟨3,1,2⟩ gives 2; Sol ⟨4,1,2,9⟩ gives 4.",
+    "solution": "{(⌊2÷˜≠𝕩)⊑∧𝕩}",
+    "tests": [
+      {
+        "expr": "Sol ⟨3,1,2⟩",
+        "expect": "2"
+      },
+      {
+        "expr": "Sol ⟨4,1,2,9⟩",
+        "expect": "4"
+      }
+    ]
+  },
+  {
+    "id": "fizzbuzz",
+    "category": "algorithms",
+    "prompt": "Write a monadic BQN function assigned to Sol that, given n, returns a list of the strings \"1\" through n where multiples of 3 are replaced by \"Fizz\", multiples of 5 by \"Buzz\", and multiples of 15 by \"FizzBuzz\" (other numbers as their decimal string). Example: Sol 5 gives ⟨\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"⟩.",
+    "solution": "{{(0=15|𝕩)?\"FizzBuzz\";(0=3|𝕩)?\"Fizz\";(0=5|𝕩)?\"Buzz\";•Fmt 𝕩}¨1+↕𝕩}",
+    "tests": [
+      {
+        "expr": "Sol 15",
+        "expect": "⟨\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\",\"Fizz\",\"7\",\"8\",\"Fizz\",\"Buzz\",\"11\",\"Fizz\",\"13\",\"14\",\"FizzBuzz\"⟩"
+      },
+      {
+        "expr": "Sol 5",
+        "expect": "⟨\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"⟩"
+      }
+    ]
+  }
+]
